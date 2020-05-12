@@ -1,0 +1,6 @@
+*.db
+venv
+.idea
+sql_*.txt
+sql_rai_data.csv
+sql_insert.sql
