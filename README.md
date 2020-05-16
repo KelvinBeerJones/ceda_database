@@ -1,4 +1,4 @@
-# Digital Historical Data Toolkit
+# Digital Historical Data Toolkit database
 
 ## Introduction
 
@@ -34,23 +34,40 @@ An sql database was designed and built using the DBeaver scripting engine to cre
 
 [ERDiagram](https://github.com/KelvinBeerJones/ceda-database/blob/9fa090f2859aa41e90368458ab4fe8e95135ff9b/ERDiagram.png)
 
-
 ## Convert RAI to sql
 
 DBeaver scripting tool was used to create the tables set out in the ERDiagram.
 
 [Script to build tables](convert_rai_to_sql/create_tables.sql)
 
-1. xxx
-1. xxx
+1. The Person table is at the centre of the script.
+1. Preceeding the person table in the script are the tables for the select lists that the Person table will need to make foreign keys when it is built: Gender, address type and Title
+1. Following the Person table in the script are the social attributes tables, the many to many tables that link the attribute tables to the person table and the associated foreign key references. 
+
+[Collect data from csv sheets](https://github.com/KelvinBeerJones/ceda-database/blob/master/convert_rai_to_sql/convert.py)
+
+1. Calls the csv sheet containing the data
+1. Loops through all supplied rows from CSV and builds a unique list of values in the specified data_list
+1. loops through each record for row in data and builds unique lists of data for each relevant column (e.g. locations, genders, etc)
+1. Builds SQL insert statements
+1. Generates sql insert files (record components)
+
+[Build database](https://github.com/KelvinBeerJones/ceda-database/blob/master/convert_rai_to_sql/insert_all.sh)
+
+This code takes the insert files from convert.py and uses them to poulate the database
 
 ## Query scripts
 
-xxxxxx
+Qurey Script logs comprise of sets of reusable queries. They can be run as is, with minor changes (such as Where statement variables - <, >, =, etc), or copied and used to help write new queries. There are logs for single and joined table queries, family and date queries.
+
+[Query templates](https://github.com/KelvinBeerJones/ceda-database/tree/master/CEDA_query_scripts)
 
 ## Contact info:
 
-xxxxxx
+Kelvin Beer-Jones
+PhD by Research
+CAL, UoB
+kgb650@student.bham ac.uk
 
 
 
