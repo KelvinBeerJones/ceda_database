@@ -6,17 +6,17 @@ Build sql database to receive social data files extracted from Catalogues and in
 
 A dataset was obtained from the archives of the Royal Anthropological Institute (RAI) in London, comprising social data of over 2000 persons regarded as involved in the early development of the institution of anthropolgy in Britain, before 1871. This dataset became the initial dataset for the Project
 
-Repo clean_rai_data is private - the data is proprietary
+[clean_rai_data](RAI to 1871 (2019) Donor Copy.csv) is private - the data is proprietary
 
 Additional data was extracted from the microfilm records at the RAI archives of over 1000 subscribers and officers of the Aborigines Protection Society of London, from 1837.
 
-Repo clean_aps_data is private - the data is proprietary
+[clean_aps_data](Copy of APS Data Collection Cleaning 00.csv) is private - the data is proprietary
 
 Additional data was extracted from the manuscript records of the Society of Friends (Quakers) in Britain, London, comprising 83 Quakers concerned with the origins of the institutionalisation of anthropology (ethnology) in Britain. 
 
-repo clean_qlg_data is private - the data is proprietary
+[clean_qca_data](Quaker Committees on the Aborigines 00.csv) is private - the data is proprietary
 
-The repo clean_kbj_data is private - the csv files here combine the cleaned csv files from clean_aps_data and clean_qlg_data to bring all of my own research data to one place. 
+The repo clean_kbj_data is private - the csv files here combine the cleaned csv files from clean_aps_data and clean_qca_data to bring all of my own research data to one place. 
 
 ## Authority Structure
 
@@ -32,7 +32,7 @@ Later reasearh into family connections will produce more new records, and the au
 
 An sql database was designed and built using the DBeaver scripting engine to create the tables.
 
-[Database ERDiagram](https://github.com/KelvinBeerJones/ceda-database/blob/9fa090f2859aa41e90368458ab4fe8e95135ff9b/ERDiagram.png)
+[ERDiagram](https://github.com/KelvinBeerJones/ceda-database/blob/9fa090f2859aa41e90368458ab4fe8e95135ff9b/ERDiagram.png)
 
 
 ## Convert RAI to sql
