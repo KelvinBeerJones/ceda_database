@@ -1,4 +1,4 @@
-# Digital Historical Data Toolkit database
+# Digital Historical Data Toolkit Database
 
 ## Introduction
 
@@ -8,15 +8,15 @@ A dataset was obtained from the archives of the Royal Anthropological Institute 
 
 [clean_rai_data](https://github.com/KelvinBeerJones/clean_rai_data) is private - the data is proprietary
 
-Additional data was extracted from the microfilm records at the RAI archives of over 1000 subscribers and officers of the Aborigines Protection Society of London, from 1837.
+Additional data was extracted from the microfilm records at the RAI archives of over 1000 subscribers and officers of the Aborigines Protection Society of London, from 1837 to 1870.
 
 [clean_aps_data](https://github.com/KelvinBeerJones/clean_aps_data) is private - the data is proprietary
 
-Additional data was extracted from the manuscript records of the Society of Friends (Quakers) in Britain, London, comprising 83 Quakers concerned with the origins of the institutionalisation of anthropology (ethnology) in Britain. 
+Additional data was extracted from the manuscript records of the Society of Friends (Quakers) in Britain, London, comprising 83 Quakers concerned with the origins of the institutionalisation of anthropology (ethnology) in Britain 1830 to 1837. 
 
 [clean_qca_data](https://github.com/KelvinBeerJones/clean_qca_data) is private - the data is proprietary
 
-The repo clean_kbj_data is private - the csv files here combine the cleaned csv files from clean_aps_data and clean_qca_data to bring all of my own research data to one place. 
+[clean_kbj_data](https://github.com/KelvinBeerJones/clean_kbj_data) is private - the csv files here combine the cleaned csv files from clean_aps_data and clean_qca_data to bring all of my own research data to one place. 
 
 ## Authority Structure
 
@@ -41,16 +41,16 @@ DBeaver scripting tool was used to create the tables set out in the ERDiagram.
 [Script to build tables](convert_rai_to_sql/create_tables.sql)
 
 1. The Person table is at the centre of the script.
-1. Preceeding the person table in the script are the tables for the select lists that the Person table will need to make foreign keys when it is built: Gender, address type and Title
+1. Preceeding the person table in the script are the tables for the select lists that the Person table will need to make foreign keys when it is built: gender, address type and title
 1. Following the Person table in the script are the social attributes tables, the many to many tables that link the attribute tables to the person table and the associated foreign key references. 
 
 [Collect data from csv sheets](https://github.com/KelvinBeerJones/ceda-database/blob/master/convert_rai_to_sql/convert.py)
 
-1. Calls the csv sheet containing the data
-1. Loops through all supplied rows from CSV and builds a unique list of values in the specified data_list
-1. loops through each record for row in data and builds unique lists of data for each relevant column (e.g. locations, genders, etc)
-1. Builds SQL insert statements
-1. Generates sql insert files (record components)
+1. This script calls the csv sheet containing the data
+1. The code loops through all supplied rows from CSV and builds a unique list of values in the specified data_list
+1. The code then loops through each record and builds unique lists of data for each relevant column (e.g. locations, genders, etc)
+1. The code builds SQL insert statements
+1. It finally generates sql insert files (data extracted from the csv file by field for each record)
 
 [Build database](https://github.com/KelvinBeerJones/ceda-database/blob/master/convert_rai_to_sql/insert_all.sh)
 
@@ -58,7 +58,7 @@ This code takes the insert files from convert.py and uses them to poulate the da
 
 ## Query scripts
 
-Qurey Script logs comprise of sets of reusable queries. They can be run as is, with minor changes (such as Where statement variables - <, >, =, etc), or copied and used to help write new queries. There are logs for single and joined table queries, family and date queries.
+Qurey Script logs comprise of sets of reusable queries. They can be run as is, with minor changes (such as where statement variables - <, >, =, etc), or copied and used to help write new queries. There are logs for single and joined table queries, family and date queries.
 
 [Query templates](https://github.com/KelvinBeerJones/ceda-database/tree/master/CEDA_query_scripts)
 
