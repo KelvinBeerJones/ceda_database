@@ -6,7 +6,7 @@ Build sql database to receive social data files extracted from Catalogues and in
 
 A dataset was obtained from the archives of the Royal Anthropological Institute (RAI) in London, comprising social data of over 2000 persons regarded as involved in the early development of the institution of anthropolgy in Britain, before 1871. This dataset became the initial dataset for the Project
 
-[clean_rai_data](RAI to 1871 (2019) Donor Copy.csv) is private - the data is proprietary
+[clean_rai_data](https://github.com/KelvinBeerJones/clean_rai_data) is private - the data is proprietary
 
 Additional data was extracted from the microfilm records at the RAI archives of over 1000 subscribers and officers of the Aborigines Protection Society of London, from 1837.
 
