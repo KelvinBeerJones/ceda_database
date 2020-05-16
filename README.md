@@ -32,14 +32,14 @@ Later reasearh into family connections will produce more new records, and the au
 
 An sql database was designed and built using the DBeaver scripting engine to create the tables.
 
-[Database ERDiagram] (https://github.com/KelvinBeerJones/ceda-database/blob/9fa090f2859aa41e90368458ab4fe8e95135ff9b/ERDiagram.png)
+[Database ERDiagram](https://github.com/KelvinBeerJones/ceda-database/blob/9fa090f2859aa41e90368458ab4fe8e95135ff9b/ERDiagram.png)
 
 
 ## Convert RAI to sql
 
 DBeaver scripting tool was used to create the tables set out in the ERDiagram.
 
-(convert_rai_to_sql/create_tables.sql)
+[Script to build tables](convert_rai_to_sql/create_tables.sql)
 
 1. xxx
 1. xxx
