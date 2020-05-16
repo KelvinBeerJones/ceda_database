@@ -14,7 +14,7 @@ Additional data was extracted from the manuscript records of the Society of Frie
 
 An sql database was designed and built using the DBeaver scripting engine and create the tables.
 
-![ERDiagram] (9fa090f)
+![alt text] (https://github.com/KelvinBeerJones/ceda-database/blob/9fa090f2859aa41e90368458ab4fe8e95135ff9b/ERDiagram.png)
 
 
 ## Convert RAI to sql
