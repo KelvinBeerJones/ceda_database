@@ -10,11 +10,11 @@ A dataset was obtained from the archives of the Royal Anthropological Institute 
 
 Additional data was extracted from the microfilm records at the RAI archives of over 1000 subscribers and officers of the Aborigines Protection Society of London, from 1837.
 
-[clean_aps_data](Copy of APS Data Collection Cleaning 00.csv) is private - the data is proprietary
+[clean_aps_data](https://github.com/KelvinBeerJones/clean_aps_data) is private - the data is proprietary
 
 Additional data was extracted from the manuscript records of the Society of Friends (Quakers) in Britain, London, comprising 83 Quakers concerned with the origins of the institutionalisation of anthropology (ethnology) in Britain. 
 
-[clean_qca_data](Quaker Committees on the Aborigines 00.csv) is private - the data is proprietary
+[clean_qca_data](https://github.com/KelvinBeerJones/clean_qca_data) is private - the data is proprietary
 
 The repo clean_kbj_data is private - the csv files here combine the cleaned csv files from clean_aps_data and clean_qca_data to bring all of my own research data to one place. 
 
