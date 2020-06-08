@@ -25,7 +25,7 @@
 
 -- Example_1 (find all members of the Ethnological Society of London)
 
-SELECT family_name, first_names, esl_join_year
+SELECT id, family_name, first_names, esl_join_year, esl_left_year
 FROM person
 WHERE esl_join_year IS NOT NULL
 ORDER BY esl_join_year;
@@ -157,6 +157,13 @@ SELECT id, family_name, first_names, birth_year
 FROM person
 WHERE family_name NOTNULL; 
 
+-- Example_15 (find all members of the CEDA)
+
+SELECT id, (first_names || " " || family_name) AS full_name, 
+esl_join_year, esl_left_year, ai_join_year, ai_left_year, aps_join_year, aps_left_year, las_join_year, las_left_year 
+FROM person; 
+
+ 
 
 
 
