@@ -122,7 +122,7 @@ UPDATE m2m_person_ceda SET last_year = NULL WHERE last_year = '0';
 
 -- 1/6 - disable foreign key constraint check
 PRAGMA foreign_keys=off;
--- 2/6 - Drop columns and add new data_source column
+-- 2/6 - Drop columns and add new data_source_id column
 CREATE TABLE IF NOT EXISTS person_temp (
     id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     family_name VARCHAR (255),
@@ -131,12 +131,12 @@ CREATE TABLE IF NOT EXISTS person_temp (
     gender_id INTEGER,
     birth_year INTEGER,
     death_year INTEGER,
-    data_source INTEGER,
+    data_source_id INTEGER,
     notes text,
 
     FOREIGN KEY (title_id) REFERENCES sl_title (id) ON DELETE SET NULL
     FOREIGN KEY (gender_id) REFERENCES sl_gender (id) ON DELETE SET NULL
-    FOREIGN KEY (data_source) REFERENCES sl_person_data_source (id) ON DELETE SET NULL
+    FOREIGN KEY (data_source_id) REFERENCES sl_person_data_source (id) ON DELETE SET NULL
 );
 -- 3/6 - copy data from the current table to the temp table
 INSERT INTO person_temp(id, family_name, first_names, title_id, gender_id, birth_year, death_year, notes)
@@ -150,10 +150,9 @@ ALTER TABLE person_temp RENAME TO person;
 PRAGMA foreign_keys=on;
 
 
--- Set all current records to "RAI" for the new data_source field
+-- Set all current records to "RAI" for the new data_source_id field
 UPDATE person
-SET data_source = 1
-WHERE data_source IS NULL;
+SET data_source_id = 1;
 
 
 --write a 'VIEW' that will dispaly a table of all ceda memberships. Then export the data to csv in a dhdt project folder. 
