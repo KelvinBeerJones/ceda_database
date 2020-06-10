@@ -131,11 +131,12 @@ CREATE TABLE IF NOT EXISTS person_temp (
     gender_id INTEGER,
     birth_year INTEGER,
     death_year INTEGER,
-    data_source VARCHAR (255),
+    data_source INTEGER,
     notes text,
 
     FOREIGN KEY (title_id) REFERENCES sl_title (id) ON DELETE SET NULL
-    FOREIGN KEY (gender_id) REFERENCES sl_gender (id) ON DELETE RESTRICT
+    FOREIGN KEY (gender_id) REFERENCES sl_gender (id) ON DELETE SET NULL
+    FOREIGN KEY (data_source) REFERENCES sl_person_data_source (id) ON DELETE SET NULL
 );
 -- 3/6 - copy data from the current table to the temp table
 INSERT INTO person_temp(id, family_name, first_names, title_id, gender_id, birth_year, death_year, notes)
@@ -151,7 +152,7 @@ PRAGMA foreign_keys=on;
 
 -- Set all current records to "RAI" for the new data_source field
 UPDATE person
-SET data_source = "RAI"
+SET data_source = 1
 WHERE data_source IS NULL;
 
 
