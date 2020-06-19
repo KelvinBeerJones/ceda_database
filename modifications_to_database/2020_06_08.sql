@@ -139,20 +139,40 @@ CREATE TABLE IF NOT EXISTS person_temp (
     FOREIGN KEY (data_source_id) REFERENCES sl_person_data_source (id) ON DELETE SET NULL
 );
 -- 3/6 - copy data from the current table to the temp table
+
 INSERT INTO person_temp(id, family_name, first_names, title_id, gender_id, birth_year, death_year, notes)
 SELECT id, family_name, first_names, title_id, gender_id, birth_year, death_year, notes
 FROM person;
+
 -- 4/6 - drop the current table
+
 DROP TABLE person;
+
 -- 5/6 - rename the temp table to the original table name
+
 ALTER TABLE person_temp RENAME TO person;
+
 -- 6/6 - enable foreign key constraint check
+
 PRAGMA foreign_keys=on;
 
 
 -- Set all current records to "RAI" for the new data_source_id field
 UPDATE person
 SET data_source_id = 1;
+
+--to add option to religion confirmed?
+ALTER TABLE m2m_person_religion
+ADD confirmed INTEGER NOT NULL DEFAULT 0 CHECK (confirmed in (0,1));
+
+--add notes field
+
+ALTER TABLE m2m_person_religion
+ADD notes TEXT;
+
+-- Add Quaker to religion
+insert into religion (id, name) 
+values (1, "Quaker"), (2, "Methodist"), (3, "Jew"), (4, "CoE");
 
 
 --write a 'VIEW' that will dispaly a table of all ceda memberships. Then export the data to csv in a dhdt project folder. 
