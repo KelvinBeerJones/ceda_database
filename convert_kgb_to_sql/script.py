@@ -16,6 +16,11 @@ db_data_source_ids = {
     'APS' : 3
 }
 
+# Set the data_source to RAI (so 1) for all existing people
+sql_output += """
+UPDATE person SET data_source_id = {} WHERE id <= {};
+""".format(db_data_source_ids["RAI"], db_person_id)
+
 # function to replace empty strings from csv with 'NULL' 
 def value_or_null(value, valueisastring=False):
     v = value if valueisastring != True else '"{}"'.format(value.replace('"', "'"))
