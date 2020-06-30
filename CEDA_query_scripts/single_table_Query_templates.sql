@@ -34,6 +34,9 @@ FROM person
 WHERE family_name NOTNULL; 
 
 
+--list all records where first_year > 1871 (and delete)
 
-
+SELECT *
+FROM m2m_person_ceda
+WHERE first_year > 1871;
 
