@@ -138,3 +138,7 @@ FROM person
 WHERE person.id NOT IN
     (SELECT m2m_person_ceda.person_id 
      FROM m2m_person_ceda);
+
+SELECT *
+FROM m2m_person_ceda
+WHERE first_year > 1871	 
