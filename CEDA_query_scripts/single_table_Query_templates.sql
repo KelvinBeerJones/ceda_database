@@ -40,3 +40,8 @@ SELECT *
 FROM m2m_person_ceda
 WHERE first_year > 1871;
 
+SELECT *
+FROM person
+WHERE data_source_id = '3';
+
+
