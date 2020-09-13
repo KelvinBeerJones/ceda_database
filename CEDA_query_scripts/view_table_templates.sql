@@ -17,6 +17,8 @@
 --ATTRIBUTES are not added.
 --(see vw_club and vw_club_gephi)
 
+--To substitute for NULL in a field use: select id, family_name, IFNULL(title, 'xxx') from person p
+
 
 --This VIEW lists all 3145 persons (NODES) in the database with their person attributes (From the person table) .
 CREATE VIEW [vw_person]
