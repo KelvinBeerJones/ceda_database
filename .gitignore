@@ -7,3 +7,6 @@ sql_insert.sql
 .PowerFolder
 desktop.ini
 convert_kgb_to_sql/output.sql
+convert_people_relationships/mike_demo/convert.py
+convert_people_relationships/mike_demo/input.csv
+convert_people_relationships/mike_demo/output.sql
