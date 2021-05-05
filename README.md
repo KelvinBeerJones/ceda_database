@@ -67,7 +67,7 @@ Qurey Script logs comprise of sets of reusable queries. They can be run as is, w
 Kelvin Beer-Jones
 PhD by Research
 CAL, UoB
-kgb650@student.bham ac.uk
+kgb650@student.bham.ac.uk
 
 
 
