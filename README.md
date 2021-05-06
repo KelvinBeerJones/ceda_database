@@ -1,4 +1,4 @@
-# Digital Historical Data Toolkit Database
+# Historical Data Digital Toolkit and Database
 
 ## Introduction
 
