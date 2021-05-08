@@ -1,10 +1,10 @@
 # Historical Data Digital Toolkit and Database
 
-#  #General Introduction
+#  General Introduction
 
 The Historical Data Digital Toolkit (HDDT) comprises a suite of open source technologies that work together efficiently without compromising the functionality of individual components. The Toolkit offers the digital historian the ability to link together the catalogue and index data from very large manuscript collections to interrogate, assimilate and visualise the rich social data (and especially social networks) implicit in the selectede manuscript collections. 
 
-##  ##The HDDT components:
+##  The HDDT components:
 
 - SQLite database with tables compiled from data taken from a range of sources;
 	- other databases
@@ -25,7 +25,7 @@ An entity relationship diagram can be viewed at [ERDiagram](https://github.com/K
 	- NetworkX (to generate input files for Gephi)
 - Gephi is used to explore the integrated social networks that emerge from the final dataset, and especially time series analysis.  
 
-##  ##The data used in development:
+##  The data used in development:
 
 Data was kindly donated by the RAI archives (London)and the QFHS (London). Further data was obtained from my own research at RAI archives (London) and Friends House London Quaker Archives.
 
