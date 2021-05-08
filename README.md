@@ -2,7 +2,7 @@
 
 #  General Introduction
 
-The Historical Data Digital Toolkit (HDDT) comprises a suite of open source technologies that work together efficiently without compromising the functionality of individual components. The Toolkit offers the digital historian the ability to collect, organise and link together the catalogue and index data from very large manuscript collections to enable the historian to interrogate, assimilate and visualise the rich social data (and especially social networks) implicit in the selectede manuscript collections. 
+The Historical Data Digital Toolkit (HDDT) comprises a suite of open source technologies that work together efficiently without compromising the functionality of individual components. The Toolkit offers the digital historian the ability to collect, organise and link together the catalogue and index data from very large manuscript collections to enable the historian to interrogate, assimilate and visualise the rich social data (and especially social networks) implicit in the selected manuscript collections. 
 
 ##  The HDDT components:
 
@@ -23,13 +23,13 @@ An entity relationship diagram can be viewed at [ERDiagram](https://github.com/K
 	- numpy
 	- matplotlib
 	- NetworkX (to generate input files for Gephi)
-- Gephi is used to explore the integrated social networks that emerge from the final dataset, and especially time series analysis.  
+- Gephi is used to explore the integrated social networks that emerge from the final dataset, and especially time series analysis  
 
 ##  The data used in development:
 
 Data was kindly donated by the RAI archives (London) and the QFHS (London). Further data was obtained from my own research at RAI archives (London) and Friends House (London) Quaker Archives.
 
-Data collected comprised of social data on circa 3000 persons known to have participated in the 'Centres for the Emergence of the Discipline of Anthropology' (CEDA) in Britain:
+Data collected comprised of social data on circa 3000 persons known to have participated in the 'Centres for the Emergence of the Discipline of Anthropology' (CEDA) in Britain. Among these around 600 Quakers were found and (later) 450 of these Quakers' family relationships were obtained:
 
 -  Quaker Committee's that nurtured and developed the Aborigines Protection Society
 -  The Aborigines Protection Society
@@ -42,7 +42,7 @@ Data collected comprised of social data on circa 3000 persons known to have part
 
 The database records that were created from the initial dataset from the RAI form the Authority Index.
 
-My own research at RAI and Society of Friends produced over 1000 new records, some of which potentially duplicated records in the initial (RAI) data set, but name variants were often used (e.g. John, Jack, J). Where the initial dataset records already contain a family_name and / or first_names, then the initial dataset record form the authority index. New data therefore had to be matched to a record in the established Authority Index. This was a careful process informed by all of the known data on prospective match candidates. 
+My own research at RAI and Society of Friends produced over 1000 new records, some of which potentially duplicated records in the initial (RAI) data set, but name variants were often used (e.g. John, Jack, J). Where the initial dataset records already contain a family_name and / or first_names, then the initial dataset record form the authority index. New data therefore had to be matched to a record in the established Authority Index. This was a careful process informed by all of the known data on prospective match candidates. This issue arose and was addressed again when (later) genealogical data was donated by QFHS. 
 
 ## sql database build scripts for the initial build (RAI data)
 
