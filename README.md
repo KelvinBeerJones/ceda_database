@@ -68,12 +68,6 @@ This code takes the insert files from convert.py and uses them to poulate the da
 
 The build process highlighted data issues that invoked cleaning routines. https://github.com/KelvinBeerJones/ceda_database/tree/master/convert_rai_to_sql/cleaning_post_scripts
 
-## Query scripts 
-
-Qurey Script logs comprise of sets of reusable queries. They can be run as is, with minor changes (such as where statement variables - <, >, =, etc), or copied and used to help write new queries. There are logs for single and joined table queries, family and date queries.
-
-[Query templates](https://github.com/KelvinBeerJones/ceda-database/tree/master/CEDA_query_scripts)
-
 end
 
 ## Contact info:
