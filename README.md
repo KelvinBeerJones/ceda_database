@@ -1,48 +1,56 @@
-# Digital Historical Data Toolkit Database
+# Historical Data Digital Toolkit and Database
 
-## Introduction
+#  General Introduction
 
-Build sql database to receive social data files extracted from Catalogues and indexes of large national archives.
+The Historical Data Digital Toolkit (HDDT) comprises a suite of open source technologies that work together efficiently without compromising the functionality of individual components. The Toolkit offers the digital historian the ability to collect, organise and link together the catalogue and index data from very large manuscript collections to enable the historian to interrogate, assimilate and visualise the rich social data (and especially social networks) implicit in the selected manuscript collections. 
 
-A dataset was obtained from the archives of the Royal Anthropological Institute (RAI) in London, comprising social data of over 2000 persons regarded as involved in the early development of the institution of anthropolgy in Britain, before 1871. This dataset became the initial dataset for the Project
+##  The HDDT components:
 
-[clean_rai_data](https://github.com/KelvinBeerJones/clean_rai_data) is private - the data is proprietary
+- SQLite database with tables compiled from data taken from a range of sources;
+	- other databases
+	- genealogical programmes
+	- microfilm
+	- archival research
+	- excel
 
-Additional data was extracted from the microfilm records at the RAI archives of over 1000 subscribers and officers of the Aborigines Protection Society of London, from 1837 to 1870.
+An entity relationship diagram can be viewed at [ERDiagram](https://github.com/KelvinBeerJones/ceda-database/blob/9fa090f2859aa41e90368458ab4fe8e95135ff9b/ERDiagram.png)
 
-[clean_aps_data](https://github.com/KelvinBeerJones/clean_aps_data) is private - the data is proprietary
+- VSC was used to build the HDDT database
+- DBeaver was used to manage the data
+- Jupyter Notebooks are used to interrogate the data using CSV data extracted from the HDDT database;
+	- datashader
+	- pandas
+	- numpy
+	- matplotlib
+	- NetworkX (to generate input files for Gephi)
+- Gephi is used to explore the integrated social networks that emerge from the final dataset, and especially time series analysis  
 
-Additional data was extracted from the manuscript records of the Society of Friends (Quakers) in Britain, London, comprising 83 Quakers concerned with the origins of the institutionalisation of anthropology (ethnology) in Britain 1830 to 1837. 
+##  The data used in development:
 
-[clean_qca_data](https://github.com/KelvinBeerJones/clean_qca_data) is private - the data is proprietary
+Data was kindly donated by the RAI archives (London) and the QFHS (London). Further data was obtained from my own research at RAI archives (London) and Friends House (London) Quaker Archives.
 
-[clean_kbj_data](https://github.com/KelvinBeerJones/clean_kbj_data) is private - the csv files here combine the cleaned csv files from clean_aps_data and clean_qca_data to bring all of my own research data to one place. 
+Data collected comprised of social data on circa 3000 persons known to have participated in the 'Centres for the Emergence of the Discipline of Anthropology' (CEDA) in Britain. Among these around 600 Quakers were found and (later) 450 of these Quakers' family relationships were obtained:
+
+-  Quaker Committee's that nurtured and developed the Aborigines Protection Society
+-  The Aborigines Protection Society
+-  The Ethnological Society of London
+-  The Anthropological Society of London
+-  The London Anthropological Society
+-  The Anthropological Institute
 
 ## Authority Structure
 
-The database records created from the initial dataset clean_rai_data form the initial authority index.
+The database records that were created from the initial dataset from the RAI form the Authority Index.
 
-My own research at RAI and Society of Friends gathered data that provides updates to some of the initial data set records. Where the initial dataset records already contain a family_name and / or first_names, then the initial dataset record form the authority index. Name styles in clean_kbj_data are not taken up into the database if names are already present in the database.   
+My own research at RAI and Society of Friends produced over 1000 new records, some of which potentially duplicated records in the initial (RAI) data set, but name variants were often used (e.g. John, Jack, J). Where the initial dataset records already contain a family_name and / or first_names, then the initial dataset record form the authority index. New data therefore had to be matched to a record in the established Authority Index. This was a careful process informed by all of the known data on prospective match candidates. This issue arose and was addressed again when (later) genealogical data was donated by QFHS. 
 
-My own research clean_kbj_data also produced over 1000 new records, and when added to the initial dataset then the family_name and first_names in clean_kbj_clean are used to extend the authority index.
-
-Later reasearh into family connections will produce more new records, and the authority index will then extend following the heirarchical strucure set out here. 
-
-##  The Database
-
-An sql database was designed and built using the DBeaver scripting engine to create the tables.
-
-[ERDiagram](https://github.com/KelvinBeerJones/ceda-database/blob/9fa090f2859aa41e90368458ab4fe8e95135ff9b/ERDiagram.png)
-
-## Convert RAI to sql
-
-DBeaver scripting tool was used to create the tables set out in the ERDiagram.
+## sql database build scripts for the initial build (RAI data)
 
 [Script to build tables](convert_rai_to_sql/create_tables.sql)
 
 1. The Person table is at the centre of the script.
-1. Preceeding the person table in the script are the tables for the select lists that the Person table will need to make foreign keys when it is built: gender, address type and title
-1. Following the Person table in the script are the social attributes tables, the many to many tables that link the attribute tables to the person table and the associated foreign key references. 
+1. Preceeding the person table in the script are the tables for the select lists that the Person table will need to make foreign keys when the database is built: gender, address type and title.
+1. Following the Person table in the script are the social attributes tables, which are the many to many tables that link the attribute tables to the person table using the associated foreign key references. 
 
 [Collect data from csv sheets](https://github.com/KelvinBeerJones/ceda-database/blob/master/convert_rai_to_sql/convert.py)
 
@@ -56,18 +64,18 @@ DBeaver scripting tool was used to create the tables set out in the ERDiagram.
 
 This code takes the insert files from convert.py and uses them to poulate the database
 
-## Query scripts
+## Post build cleaning
 
-Qurey Script logs comprise of sets of reusable queries. They can be run as is, with minor changes (such as where statement variables - <, >, =, etc), or copied and used to help write new queries. There are logs for single and joined table queries, family and date queries.
+The build process highlighted data issues that invoked cleaning routines. https://github.com/KelvinBeerJones/ceda_database/tree/master/convert_rai_to_sql/cleaning_post_scripts
 
-[Query templates](https://github.com/KelvinBeerJones/ceda-database/tree/master/CEDA_query_scripts)
+end
 
 ## Contact info:
 
 Kelvin Beer-Jones
 PhD by Research
 CAL, UoB
-kgb650@student.bham ac.uk
+kgb650@student.bham.ac.uk
 
 
 
