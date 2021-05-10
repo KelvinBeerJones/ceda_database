@@ -4,7 +4,26 @@
 
 -- 6 persons are not Quaker (but they remain as persons):
 
-DELETE 
+-- Delete duplicate records (The datebase holds undirected relationships) 
+-- and so a record where Jack is related to John is not required if there is another record: John is related to Jack)
+
+
+--DELETE
+SELECT *
+FROM m2m_person_person
+WHERE person1_id >= person2_id
+	AND
+	EXISTS (
+			SELECT 1
+			FROM m2m_person_person t2
+      		WHERE t2.person1_id AND	t2.person2_id
+            );
+
+
+     
+     
+--DELETE
+SELECT * 
 FROM m2m_person_religion
 WHERE person_id = 2330
 OR person_id = 2695
@@ -15,7 +34,8 @@ OR person_id = 2484;
 
 --There are 50 duplicate persons who are assigned as Quakers, they must first be deleted from the m2m_person_religion table:
 
-DELETE
+--DELETE
+SELECT *
 FROM m2m_person_religion
 WHERE person_id = 2267
 OR person_id = 2269
@@ -72,7 +92,8 @@ OR person_id = 2533;
 
 -- There are 3145 persons - 50 = 3095 when this exercise is complete (check)
 
-DELETE
+--DELETE
+SELECT *
 FROM person
 WHERE id = 2267
 OR id = 2269
@@ -125,13 +146,6 @@ OR id = 2655
 OR id = 2703
 OR id = 2533;
 
--- Delete duplicate records (The datbase is undirected) 
---and a record where Jack is related to John is not required if there is another record: John is related to Jack)
 
---DELETE
---FROM m2m_person_person
---WHERE EXISTS (SELECT 1 FROM m2m_person_person t2
-              WHERE t2.name2 = m2m_person_person.person1_id AND
-                    t2.name1 = m2m_person_person.person1_2d) AND
-      name1 >= name2;
+
 
