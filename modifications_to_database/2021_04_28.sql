@@ -7,6 +7,14 @@
 -- Delete duplicate records (The datebase holds undirected relationships) 
 -- and so a record where Jack is related to John is not required if there is another record: John is related to Jack)
 
+-- 585 Null records were present in the m2m_person_religion table 
+
+
+-- DELETE
+SELECT *
+FROM m2m_person_religion
+WHERE religion_id IS NULL;
+
 
 --DELETE
 SELECT *
