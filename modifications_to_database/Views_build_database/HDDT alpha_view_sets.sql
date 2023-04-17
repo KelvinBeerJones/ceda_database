@@ -51,6 +51,32 @@ SELECT COUNT (*) FROM vw_hddt_person_name;
 
 
 
+DROP VIEW [vw_hddt_person_donor];
+
+CREATE VIEW [vw_hddt_person_donor]
+AS
+SELECT (first_names || " " || family_name) AS Name, 
+data_source_id
+FROM person;
+
+SELECT COUNT (*) FROM vw_hddt_person_donor;
+
+
+DROP VIEW [vw_hddt_person_with_data_source];
+
+CREATE VIEW [vw_hddt_person_with_data_source] 
+AS 
+SELECT (first_names || " " || family_name) AS Name, 
+		IFNULL(name,'NA') AS data_source
+FROM person
+LEFT JOIN sl_person_data_source
+ON person.data_source_id = sl_person_data_source.id;
+
+SELECT COUNT (*) FROM vw_hddt_person_with_data_source;
+
+
+
+
 -- Then a person (or SOURCE) view can be made with attributes, also from the person_table
 DROP VIEW [vw_hddt_person_attributes];
 

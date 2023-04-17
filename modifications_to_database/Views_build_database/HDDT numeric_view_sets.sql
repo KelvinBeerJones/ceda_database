@@ -235,6 +235,11 @@ WHERE religion_id = 1;
 
 SELECT COUNT (*) FROM vw_1_quakers;
 
+CREATE VIEW vw_1_quakers_names
+AS
+SELECT Name
+FROM vw_1_quakers;
+
 
 
 
@@ -620,7 +625,7 @@ CREATE VIEW vw_4_ceda_membership_quakers
 AS 
 SELECT 
                 person.id as person_id,
-                (first_names || " " || family_name) AS Name,
+                (first_names || " " || family_name) AS Name,            
                IFNULL(m2m_person_religion.religion_id,'NA') AS religion_id,
                IFNULL(religion.name,'NA') AS religion_name,
                 m2m_person_ceda.ceda_id,
@@ -642,6 +647,46 @@ WHERE
                 m2m_person_ceda.last_year IS NOT NULL;
                
  SELECT COUNT (*) From  vw_4_ceda_membership_quakers; 
+
+
+DROP VIEW vw_4_ceda_membership_quakers2;
+
+CREATE VIEW vw_4_ceda_membership_quakers2
+AS 
+SELECT 
+                --person.id as person_id,
+                (first_names || " " || family_name) AS Name,
+                birth_year,
+                death_year, 
+               IFNULL(religion.name,'NA') AS religion_name,
+               ceda.name AS ceda_name,
+                m2m_person_ceda.first_year AS person_ceda_first_year,
+                m2m_person_ceda.last_year AS person_ceda_last_year
+FROM person
+INNER JOIN m2m_person_religion
+                ON m2m_person_religion.person_id = person.id
+LEFT JOIN religion
+                ON religion.id = m2m_person_religion.religion_id
+INNER JOIN m2m_person_ceda
+                ON m2m_person_ceda.person_id = person.id
+LEFT JOIN ceda 
+                ON ceda.id = m2m_person_ceda.ceda_id 
+WHERE 
+                m2m_person_ceda.first_year IS NOT NULL
+                AND
+                m2m_person_ceda.last_year IS NOT NULL;
+               
+ SELECT COUNT (*) From  vw_4_ceda_membership_quakers; 
+
+
+
+
+
+CREATE VIEW vw_4_ceda_membership_quakers_hod
+AS
+SELECT *
+FROM vw_4_ceda_membership_quakers vcmq 
+WHERE ceda_id = 7;
 
 --------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -688,6 +733,12 @@ LEFT JOIN vw_5_person2
 ON vw_5_person1.id = vw_5_person2.id; 
 
 SELECT COUNT (*) From  vw_5_person1_person2;
+
+CREATE VIEW vw_5_quaker_relationships_3
+AS
+SELECT *
+FROM vw_5_person1_person2
+WHERE relationship_type_id = 3;
 
 
 ------------------------------------------------------------------------------------------------------------------------------------

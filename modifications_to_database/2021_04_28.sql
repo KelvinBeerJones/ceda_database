@@ -392,3 +392,12 @@ WHERE id = 227 OR id = 3081 OR id = 3116 OR id = 185 OR id = 2330 OR id = 1260;
 DELETE
 FROM m2m_person_ceda
 WHERE m2m_person_ceda.id = 2925;
+
+SELECT *
+FROM person
+WHERE family_name = 'Allen'; 
+
+UPDATE person 
+SET first_names = 'William (Capt.)'
+WHERE id = 28;
+
