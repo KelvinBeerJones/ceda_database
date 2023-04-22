@@ -222,7 +222,7 @@ DROP VIEW [vw_hddt_ceda_tuples_attributes];
 
 CREATE VIEW vw_hddt_ceda_tuples_attributes
 AS 
-SELECT (first_names || " " || family_name) AS 'Source',
+SELECT (first_names || " " || family_name) AS Name,
        ceda.name AS Target,
        m2m_person_ceda.first_year AS first_year,
        m2m_person_ceda.last_year AS last_year, 
@@ -237,7 +237,18 @@ WHERE
                 m2m_person_ceda.first_year IS NOT NULL
                 AND
                 m2m_person_ceda.last_year IS NOT NULL;
- SELECT COUNT (*) FROM vw_hddt_ceda_tuples_attributes;              
+ SELECT COUNT (*) FROM vw_hddt_ceda_tuples_attributes;  
+
+
+
+DROP VIEW vw_hddt_ceda_tuples_attributes2;
+
+CREATE VIEW vw_hddt_ceda_tuples_attributes2
+AS
+SELECT Name, Target, first_year, last_year
+FROM vw_hddt_ceda_tuples_attributes;
+
+SELECT COUNT (*) FROM vw_hddt_ceda_tuples_attributes2;
                
      
      

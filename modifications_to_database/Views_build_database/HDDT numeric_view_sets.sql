@@ -225,6 +225,20 @@ ON person.id = m2m_person_religion.person_id;
 SELECT COUNT(*) FROM vw_1_person_with_quakers; 
 
 
+
+
+DROP VIEW [vw_1_person_with_quakers2];
+
+CREATE VIEW [vw_1_person_with_quakers2]
+AS
+SELECT Name, birth_year, death_year, religion_id
+FROM vw_1_person_with_quakers;
+
+SELECT COUNT(*) FROM vw_1_person_with_quakers2; 
+
+
+
+
 DROP VIEW vw_1_quakers;
 
 CREATE VIEW vw_1_quakers
@@ -409,6 +423,16 @@ FROM m2m_person_ceda m, person p, ceda c
 WHERE m.person_id = p.id AND m.ceda_id = c.id; 
 
 SELECT COUNT(*) FROM vw_2_ceda_membership;
+
+
+DROP VIEW vw_2_ceda_membership2; 
+
+CREATE VIEW IF NOT EXISTS vw_2_ceda_membership2 as 
+SELECT (p.first_names || " " || p.family_name) AS Source, c.name AS Target 
+FROM m2m_person_ceda m, person p, ceda c 
+WHERE m.person_id = p.id AND m.ceda_id = c.id; 
+
+SELECT COUNT(*) FROM vw_2_ceda_membership2;
 
 
 
@@ -625,7 +649,9 @@ CREATE VIEW vw_4_ceda_membership_quakers
 AS 
 SELECT 
                 person.id as person_id,
-                (first_names || " " || family_name) AS Name,            
+                (first_names || " " || family_name) AS Name,
+                birth_year,
+                death_year, 
                IFNULL(m2m_person_religion.religion_id,'NA') AS religion_id,
                IFNULL(religion.name,'NA') AS religion_name,
                 m2m_person_ceda.ceda_id,
@@ -676,11 +702,19 @@ WHERE
                 AND
                 m2m_person_ceda.last_year IS NOT NULL;
                
- SELECT COUNT (*) From  vw_4_ceda_membership_quakers; 
+ SELECT COUNT (*) From  vw_4_ceda_membership_quakers2; 
 
 
 
+DROP VIEW vw_4_ceda_membership_quakers3; 
 
+CREATE VIEW vw_4_ceda_membership_quakers3 
+AS
+SELECT Name, ceda_name AS Target
+From vw_4_ceda_membership_quakers2; 
+
+
+DROP VIEW vw_4_ceda_membership_quakers_hod;
 
 CREATE VIEW vw_4_ceda_membership_quakers_hod
 AS
@@ -688,13 +722,85 @@ SELECT *
 FROM vw_4_ceda_membership_quakers vcmq 
 WHERE ceda_id = 7;
 
+
+
+
+DROP VIEW vw_4_ceda_membership_quakers_qca2;
+
+CREATE VIEW vw_4_ceda_membership_quakers_qca2 
+AS
+SELECT Name, birth_year, death_year, religion_name, ceda_name, person_ceda_first_year, person_ceda_last_year
+FROM vw_4_ceda_membership_quakers_qca;
+
+
+
+DROP VIEW vw_4_ceda_membership_quakers_ai2;
+
+CREATE VIEW vw_4_ceda_membership_quakers_ai2 
+AS
+SELECT Name, birth_year, death_year, religion_name, ceda_name, person_ceda_first_year, person_ceda_last_year
+FROM vw_4_ceda_membership_quakers_ai;
+
+
+
+DROP VIEW vw_4_ceda_membership_quakers_aps2;
+
+CREATE VIEW vw_4_ceda_membership_quakers_aps2 
+AS
+SELECT Name, birth_year, death_year, religion_name, ceda_name, person_ceda_first_year, person_ceda_last_year
+FROM vw_4_ceda_membership_quakers_aps;
+
+
+DROP VIEW vw_4_ceda_membership_quakers_asl2;
+
+CREATE VIEW vw_4_ceda_membership_quakers_asl2 
+AS
+SELECT Name, birth_year, death_year, religion_name, ceda_name, person_ceda_first_year, person_ceda_last_year
+FROM vw_4_ceda_membership_quakers_asl;
+
+
+
+DROP VIEW vw_4_ceda_membership_quakers_esl2;
+
+CREATE VIEW vw_4_ceda_membership_quakers_esl2 
+AS
+SELECT Name, birth_year, death_year, religion_name, ceda_name, person_ceda_first_year, person_ceda_last_year
+FROM vw_4_ceda_membership_quakers_esl;
+
+
+
+
+DROP VIEW vw_4_ceda_membership_quakers_hod2;
+
+CREATE VIEW vw_4_ceda_membership_quakers_hod2 
+AS
+SELECT Name, birth_year, death_year, religion_name, ceda_name, person_ceda_first_year, person_ceda_last_year
+FROM vw_4_ceda_membership_quakers_hod;
+
+
+
+
+DROP VIEW vw_4_ceda_membership_quakers_las2;
+
+CREATE VIEW vw_4_ceda_membership_quakers_las2 
+AS
+SELECT Name, birth_year, death_year, religion_name, ceda_name, person_ceda_first_year, person_ceda_last_year
+FROM vw_4_ceda_membership_quakers_las;
+
+
+
+
+
+
+
+
 --------------------------------------------------------------------------------------------------------------------------------------------------
 
 --this view contributes to vw_5_person1_person2 DO NOT DELETE
 DROP VIEW vw_5_person1;
 Create VIEW vw_5_person1
 AS
-SELECT
+SELECT 
 		m2m_person_person.id,
 		m2m_person_person.relationship_type_id, 
 		m2m_person_person.person1_id,
