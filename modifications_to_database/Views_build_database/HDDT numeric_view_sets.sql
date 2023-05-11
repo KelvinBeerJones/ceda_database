@@ -76,7 +76,7 @@ SELECT COUNT(*) FROM vw_4_ceda_membership_dates;
 --answer = 643
 
 
--- Set VIEW 4 (vw_4_) shows the person to person relationships.
+-- Set VIEW 5 (vw_5_) shows the person to person relationships.
 
 SELECT COUNT (*) From  vw_5_person1;
 --answer = 2080
@@ -675,6 +675,10 @@ WHERE
  SELECT COUNT (*) From  vw_4_ceda_membership_quakers; 
 
 
+
+
+
+
 DROP VIEW vw_4_ceda_membership_quakers2;
 
 CREATE VIEW vw_4_ceda_membership_quakers2
@@ -724,6 +728,24 @@ WHERE ceda_id = 7;
 
 
 
+DROP VIEW vw_4_ceda_membership_quakers_not_hod;
+
+CREATE VIEW vw_4_ceda_membership_quakers_not_hod
+AS
+SELECT *
+FROM vw_4_ceda_membership_quakers vcmq 
+WHERE NOT ceda_id = 7;
+
+
+
+DROP VIEW vw_4_ceda_membership_quakers_not_hod2;
+
+CREATE VIEW vw_4_ceda_membership_quakers_not_hod2 
+AS
+SELECT Name, religion_name, ceda_name, person_ceda_first_year, person_ceda_last_year
+FROM vw_4_ceda_membership_quakers_not_hod;
+
+
 
 DROP VIEW vw_4_ceda_membership_quakers_qca2;
 
@@ -747,7 +769,7 @@ DROP VIEW vw_4_ceda_membership_quakers_aps2;
 
 CREATE VIEW vw_4_ceda_membership_quakers_aps2 
 AS
-SELECT Name, birth_year, death_year, religion_name, ceda_name, person_ceda_first_year, person_ceda_last_year
+SELECT Name, religion_name, ceda_name, person_ceda_first_year, person_ceda_last_year
 FROM vw_4_ceda_membership_quakers_aps;
 
 

@@ -294,7 +294,27 @@ WHERE
                 m2m_person_ceda.first_year IS NOT NULL
                 AND
                 m2m_person_ceda.last_year IS NOT NULL;
- SELECT COUNT (*) FROM vw_hddt_quakers_ceda_tuples;           
+ SELECT COUNT (*) FROM vw_hddt_quakers_ceda_tuples;        
+
+
+
+DROP VIEW vw_hddt_quakers_ceda_tuples_dates;
+
+CREATE VIEW vw_hddt_quakers_ceda_tuples_dates
+AS
+SELECT *
+FROM vw_hddt_quakers_ceda_tuples
+WHERE NOT Target  = "HOD";
+
+
+
+
+
+
+
+
+
+
  ----------------------------------------------------------------------------------------------------------------------------------
  -- Set 6 Bigraph views Non CEDA
  
